@@ -1,111 +1,175 @@
-# CrewAI Practice Projects
+# 🚀 CrewAI Learning & Projects
 
-This repository is a small collection of CrewAI experiments and examples. It starts with simple notebook-based agents and builds up to YAML-configured crews and a larger multi-agent marketing workflow.
+This repository contains a collection of **CrewAI experiments and
+projects** built while learning multi-agent AI systems using **CrewAI,
+Ollama, and custom tools**.
 
-## What is in this repo
+The goal of this repo is to understand how **AI agents collaborate to
+complete complex tasks** such as research, marketing strategy, and
+content creation.
 
-- `1.email_agent/`
-  Single-agent notebook that rewrites a rough email into a clearer, more professional version.
-- `2.email_agent_with_custom_tool/`
-  Similar email example, but adds a custom CrewAI tool to simplify jargon before producing the final draft.
-- `3.crew_research/`
-  Two-agent research and writing notebook.
-- `4.crew_research_with_web+tools/`
-  Research crew notebook that adds web search through `SerperDevTool`.
-- `5.research_yaml/`
-  A YAML-driven research and writing crew defined in Python and configured through `config/agent.yaml` and `config/tasks.yaml`.
-- `6.marketing-crew/`
-  A larger marketing workflow with agents for market research, strategy, social content, blog writing, and SEO.
+---
 
-## Tech Stack
+# 📂 Project Structure
 
-- Python
+    CREW-AI
+    │
+    ├── 1.email_agent
+    │   └── 1.email_agent.ipynb
+    │
+    ├── 2.email_agent_with_custom_tool
+    │   └── 2.email_agent_with_c_tool.ipynb
+    │
+    ├── 3.crew_research
+    │   └── 3.crew_research.ipynb
+    │
+    ├── 4.crew_research_with_web_tools
+    │   └── 4.crew_research_with_web_tools.ipynb
+    │
+    ├── 5.research_yaml
+    │   ├── config/
+    │   └── 5.yaml.py
+    │
+    ├── 6.marketing-crew
+    │   ├── config/
+    │   ├── blog_keywords_competitors.md
+    │   ├── content_calendar
+    │   └── crew.py
+
+---
+
+# 🧠 What This Repository Contains
+
+## 1️⃣ Email Agent
+
+A simple AI agent that generates emails automatically.
+
+Features: - Email generation - Prompt based responses - Basic CrewAI
+agent usage
+
+---
+
+## 2️⃣ Email Agent with Custom Tool
+
+An improved email agent with a **custom tool integration**.
+
+Features: - Custom tool usage - Agent tool calling - Structured outputs
+
+---
+
+## 3️⃣ Crew Research
+
+A **multi-agent research system**.
+
+Agents: - Research agent - Writer agent
+
+Features: - Multi-agent collaboration - Task delegation - Structured
+research output
+
+---
+
+## 4️⃣ Crew Research with Web Tools
+
+Adds **web search and scraping tools** to research agents.
+
+Tools used: - Search tool - Web scraping - Content extraction
+
+---
+
+## 5️⃣ Research using YAML Configuration
+
+Example of defining **agents and tasks using YAML configuration**.
+
+Features: - YAML based agent configuration - YAML based task
+definition - Cleaner project architecture
+
+---
+
+## 6️⃣ Marketing Crew (Advanced Project)
+
+A **multi-agent AI marketing team**.
+
+Agents: - Head of Marketing - Social Media Content Creator - Blog
+Writer - SEO Specialist
+
+Capabilities: - Market research - Marketing strategy - Social media
+content - Blog writing - SEO optimization
+
+This project simulates a **complete AI marketing department**.
+
+---
+
+# ⚙️ Technologies Used
+
 - CrewAI
-- `crewai-tools`
-- Jupyter notebooks
-- `python-dotenv`
-- `serpapi`
-- Ollama with `qwen2.5:7b` for the script-based examples
-- Gemini 2.5 Flash in the notebook-based examples
+- Ollama (Local LLMs)
+- Python
+- Pydantic
+- SerpAPI
+- Web scraping tools
 
-## Setup
+---
 
-Because this repo does not currently include a dependency manifest, install the packages manually in a virtual environment.
+# 🤖 Local LLM
 
-```powershell
-python -m venv venv
-.\venv\Scripts\activate
-pip install crewai crewai-tools python-dotenv serpapi jupyter ipykernel pydantic
-```
+Example model used:
 
-If you want to run the Python scripts in folders `5.research_yaml` and `6.marketing-crew`, make sure Ollama is running locally and the model used by the code is available:
+    qwen2.5:7b
 
-```powershell
-ollama pull qwen2.5:7b
-ollama serve
-```
+Run Ollama server:
 
-The script-based examples expect Ollama at `http://localhost:11434`.
+    ollama serve
 
-## Environment Variables
+Pull model:
 
-Create a `.env` file in the project root and add the keys your examples need.
+    ollama pull qwen2.5:7b
 
-```env
-GEMINI_API_KEY=your_key_here
-SERPER_API_KEY=your_key_here
-```
+---
 
-Notes:
+# 🛠 Installation
 
-- The notebooks use Gemini-based CrewAI LLM configuration.
-- The Python scripts use `serpapi.GoogleSearch`, but the current code reads the key from `SERPER_API_KEY`. Keep that variable name unless you plan to refactor the scripts.
-- `.env` should stay local and should not be committed.
+Clone the repository:
 
-## How To Run
+    git clone https://github.com/yourusername/crew-ai-projects.git
 
-### Notebook examples
+Install dependencies:
 
-Start Jupyter from the repository root:
+    pip install crewai crewai-tools python-dotenv serpapi
 
-```powershell
-jupyter notebook
-```
+---
 
-Then open any of these notebooks:
+# 🔑 Environment Variables
 
-- `1.email_agent/1.email_agent.ipynb`
-- `2.email_agent_with_custom_tool/2.email_agent_with_c_tool.ipynb`
-- `3.crew_research/3.crew_research.ipynb`
-- `4.crew_research_with_web+tools/4.crew_research_with_web_tools.ipynb`
+Create `.env` file:
 
-### YAML research crew
+    SERPAPI_API_KEY=your_api_key
 
-Run this from inside `5.research_yaml` so the relative config paths resolve correctly:
+---
 
-```powershell
-cd 5.research_yaml
-python .\5.yaml.py
-```
+# ▶️ Running the Project
 
-### Marketing crew
+Example: run marketing crew
 
-Run this from inside `6.marketing-crew` so the config files load correctly:
+    python crew.py
 
-```powershell
-cd 6.marketing-crew
-python .\crew.py
-```
+Agents will collaborate to produce: - marketing strategy - blogs -
+social posts - SEO optimized content
 
-## Project Notes
+---
 
-- `5.research_yaml` and `6.marketing-crew` rely on relative config paths, so run them from their own folders.
-- The marketing workflow is configured to generate strategy, content calendar, drafts, reel scripts, blogs, and SEO outputs.
-- Some task descriptions reference output folders such as `resources/drafts/...`. Create those folders if you want file outputs to be written there during local runs.
+# 📚 Learning Goals
 
-## Suggested Next Improvements
+This repository demonstrates:
 
-- Add a root `requirements.txt` or `pyproject.toml`.
-- Add a `.env.example` file with placeholder variables only.
-- Add output folders used by the marketing crew.
-- Clean up naming inconsistencies such as `SERPER_API_KEY` being used for a SerpApi-based search tool.
+- Multi-agent systems
+- Agent collaboration
+- Tool usage in AI agents
+- Local LLM integration
+- Automated workflows
+
+---
+
+# 👨‍💻 Author
+
+**Ahmad Hassan**\
+Software Engineer \| Mobile App Developer \| AI Agents
